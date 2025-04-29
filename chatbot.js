@@ -612,7 +612,7 @@
         : 'https://api.neuralcore.org';
 
       // Send message to API
-      const response = await fetch(`${host}/api/chatbot/widget/chat`, {
+      const response = await fetch(`https://api.neuralcore.org/api/chatbot/widget/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -658,7 +658,7 @@
         ? 'http://localhost:5000' 
         : 'https://api.neuralcore.org';
         
-      const response = await fetch(`${host}/api/chatbot/widget/info?id=${chatbotId}`);
+      const response = await fetch(`https://api.neuralcore.org/api/chatbot/widget/info?id=${chatbotId}`);
       const result = await response.json();
       
       if (result.success) {
