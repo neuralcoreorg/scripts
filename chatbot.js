@@ -656,7 +656,7 @@
       // Determine the correct API URL based on the environment
       const host = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
         ? 'http://localhost:5000' 
-        : 'https://neuralcore.org';
+        : 'https://api.neuralcore.org';
         
       const response = await fetch(`${host}/api/chatbot/widget/info?id=${chatbotId}`);
       const result = await response.json();
