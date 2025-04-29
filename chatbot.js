@@ -432,10 +432,10 @@
   }
   
   // Add Inter font for better typography
-  if (!document.querySelector('link[href*="fonts.googleplatforms.com/css2?family=Inter"]')) {
+  if (!document.querySelector('link[href*="fonts.googleapis.com/css2?family=Inter"]')) {
     const interFont = document.createElement('link');
     interFont.rel = 'stylesheet';
-    interFont.href = 'https://fonts.googleplatforms.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+    interFont.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
     document.head.appendChild(interFont);
   }
   
@@ -593,7 +593,7 @@
     }
   }
   
-  // Prepare platform request to NeuralCore server
+  // Prepare API request to NeuralCore server
   async function sendMessage() {
     const message = inputField.value.trim();
     if (!message) return;
@@ -606,13 +606,13 @@
     showTypingIndicator();
     
     try {
-      // Determine the correct platform URL based on the environment
+      // Determine the correct API URL based on the environment
       const host = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
         ? 'http://localhost:5000' 
         : 'https://platform.neuralcore.org';
 
-      // Send message to platform
-      const response = await fetch(`${host}/platform/chatbot/widget/chat`, {
+      // Send message to API
+      const response = await fetch(`${host}/api/chatbot/widget/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -634,7 +634,7 @@
       } else {
         // Add error message
         addMessage('Sorry, I encountered an error. Please try again later.');
-        console.error('Error from chatbot platform:', result.error);
+        console.error('Error from chatbot API:', result.error);
       }
       
     } catch (error) {
@@ -653,12 +653,12 @@
   // Load chatbot information
   async function loadChatbotInfo() {
     try {
-      // Determine the correct platform URL based on the environment
+      // Determine the correct API URL based on the environment
       const host = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
         ? 'http://localhost:5000' 
         : 'https://platform.neuralcore.org';
         
-      const response = await fetch(`${host}/platform/chatbot/widget/info?id=${chatbotId}`);
+      const response = await fetch(`${host}/api/chatbot/widget/info?id=${chatbotId}`);
       const result = await response.json();
       
       if (result.success) {
